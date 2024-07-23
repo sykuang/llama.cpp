@@ -501,7 +501,7 @@ void ggml_gemv_q4_0_4x8_q8_0(int n, float * restrict s, size_t bs, const void * 
                     "__ARM_FEATURE_SVE defined, use the Q4_0_8_8 quantization format for optimal performance");
     }
 #endif
-#if defined(__ARM_NEON) && defined(__ARM_FEATURE_MATMUL_INT8)
+#if defined(__ARM_NEON) && defined(__ARM_FEATURE_MATMUL_INT8) && !defined(_MSC_VER)
     const void * b_ptr = vx;
     const void * a_ptr = vy;
     float * res_ptr = s;
@@ -1271,7 +1271,7 @@ void ggml_gemm_q4_0_4x8_q8_0(int n, float * restrict s, size_t bs, const void * 
                     "__ARM_FEATURE_SVE defined, use the Q4_0_8_8 quantization format for optimal performance");
     }
 #endif
-#if defined(__ARM_NEON) && defined(__ARM_FEATURE_MATMUL_INT8)
+#if defined(__ARM_NEON) && defined(__ARM_FEATURE_MATMUL_INT8)  && !defined(_MSC_VER)
     const void * b_ptr = vx;
     const void * a_ptr = vy;
     float * res_ptr = s;
